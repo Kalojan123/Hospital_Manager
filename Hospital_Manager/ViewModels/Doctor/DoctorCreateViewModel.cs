@@ -4,7 +4,7 @@ namespace Hospital_Manager.ViewModels.Doctor
 {
     public class DoctorCreateViewModel
     {
-        Required(ErrorMessage = "Името е задължително.")]
+        [Required(ErrorMessage = "Името е задължително.")]
         [MaxLength(30, ErrorMessage = "Името не може да бъде по-дълго от 30 символа.")]
         public string FirstName { get; set; }
 

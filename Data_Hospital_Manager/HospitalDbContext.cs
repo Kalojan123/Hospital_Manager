@@ -18,7 +18,7 @@ namespace Data_Hospital_Manager
 
         public DbSet <Hospital> Hospitals { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
-
+        public DbSet<Patient> Patients { get; set; }
 
 
 
