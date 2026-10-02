@@ -4,6 +4,7 @@ using Data_Hospital_Manager;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Hospital_Manager.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    partial class HospitalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20261002110627_CreateDB")]
+    partial class CreateDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,21 +64,6 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasIndex("HospitalId");
 
                     b.ToTable("Doctors");
-                });
-
-            modelBuilder.Entity("Data_Hospital_Manager.Entities.DoctorPatient", b =>
-                {
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
-                    b.HasKey("DoctorId", "PatientId");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("DoctorPatients");
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.Hospital", b =>
@@ -159,38 +147,9 @@ namespace Data_Hospital_Manager.Migrations
                     b.Navigation("Hospital");
                 });
 
-            modelBuilder.Entity("Data_Hospital_Manager.Entities.DoctorPatient", b =>
-                {
-                    b.HasOne("Data_Hospital_Manager.Entities.Doctor", "Doctor")
-                        .WithMany("DoctorPatients")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Data_Hospital_Manager.Entities.Patient", "Patient")
-                        .WithMany("DoctorPatients")
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
-
-                    b.Navigation("Patient");
-                });
-
-            modelBuilder.Entity("Data_Hospital_Manager.Entities.Doctor", b =>
-                {
-                    b.Navigation("DoctorPatients");
-                });
-
             modelBuilder.Entity("Data_Hospital_Manager.Entities.Hospital", b =>
                 {
                     b.Navigation("Doctors");
-                });
-
-            modelBuilder.Entity("Data_Hospital_Manager.Entities.Patient", b =>
-                {
-                    b.Navigation("DoctorPatients");
                 });
 #pragma warning restore 612, 618
         }
