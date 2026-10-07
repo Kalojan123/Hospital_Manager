@@ -1,12 +1,12 @@
-﻿@model Hospital_Manager.ViewModels.Doctor.DoctorEditViewModel
+﻿@model Hospital_Manager.ViewModels.Patient.PatientEditViewModel
 
 @{
-    ViewData["Title"] = "Edit Doctor";
+    ViewData["Title"] = "Edit patient";
 }
 
-<h1>Edit Doctor</h1>
+<h1>Edit patient</h1>
 
-<h4>Doctor</h4>
+<h4>Patient</h4>
 <hr />
 
 <div class="row">
@@ -33,12 +33,6 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Specialty" class="control-label"></label>
-                <input asp-for="Specialty" class="form-control" />
-                <span asp-validation-for="Specialty" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
@@ -51,16 +45,16 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="HospitalId" class="control-label">
+                <label asp-for="DoctorIds" class="control-label">
                     Hospital
                 </label>
 
-                <select asp-for="HospitalId"
-                        asp-items="ViewBag.Hospitals"
-                        class="form-control">
+                <select asp-for="DoctorIds"
+                        asp-items="ViewBag.Doctors"
+                        class="dropdown-header">
                 </select>
 
-                <span asp-validation-for="HospitalId"
+                <span asp-validation-for="DoctorIds"
                       class="text-danger">
                 </span>
             </div>
