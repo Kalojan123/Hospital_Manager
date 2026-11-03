@@ -61,6 +61,28 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasIndex("HospitalId");
 
                     b.ToTable("Doctors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "email@mail.com",
+                            FirstName = "Ivan",
+                            HospitalId = 1,
+                            LastName = "Petrov",
+                            PhoneNumber = "0888888888",
+                            Specialty = "Cardiology"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "gmail@gmail.com",
+                            FirstName = "Georgi",
+                            HospitalId = 2,
+                            LastName = "Ivanov",
+                            PhoneNumber = "0899999999",
+                            Specialty = "Neurology"
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.DoctorPatient", b =>
@@ -76,6 +98,18 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasIndex("PatientId");
 
                     b.ToTable("DoctorPatients");
+
+                    b.HasData(
+                        new
+                        {
+                            DoctorId = 1,
+                            PatientId = 1
+                        },
+                        new
+                        {
+                            DoctorId = 2,
+                            PatientId = 2
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.Hospital", b =>
@@ -122,7 +156,7 @@ namespace Data_Hospital_Manager.Migrations
                             Id = 1,
                             Address = "Kazanlak",
                             BedsCount = 200,
-                            CreatedOn = new DateTime(2026, 10, 30, 14, 22, 40, 42, DateTimeKind.Local).AddTicks(7753),
+                            CreatedOn = new DateTime(2026, 11, 3, 9, 47, 4, 617, DateTimeKind.Local).AddTicks(1773),
                             Email = "hospital1@gmail.com",
                             IsDeleted = false,
                             Name = "MBAL Kazanlak",
@@ -170,6 +204,24 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Patients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "email@email.com",
+                            FirstName = "Petar",
+                            LastName = "Petrov",
+                            PhoneNumber = "0888888888"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "gmail@email.com",
+                            FirstName = "Georgi",
+                            LastName = "Georgiev",
+                            PhoneNumber = "0899999999"
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.Doctor", b =>

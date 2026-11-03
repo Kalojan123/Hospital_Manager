@@ -169,7 +169,6 @@ namespace Hospital_Manager.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _hospitalService.DeleteHospitalAsync(id);
-
             return RedirectToAction(nameof(Index));
         }
     }
