@@ -17,9 +17,33 @@ namespace Hospital_Manager.Core.Services
         {
             context_new = context;
         }
-        public async Task<List<Hospital>> GetAllHospitalsAsync()
+        public async Task<List<Hospital>> GetAllHospitalsAsync(string? search = null, int? minBeds = null, string? sortOrder = null)
         {
-            return await context_new.Hospitals.Where(h => !h.IsDeleted).ToListAsync();
+            var query = context_new.Hospitals.Where(h => !h.IsDeleted);
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(h => h.Name.Contains(search));
+            }
+            if (minBeds.HasValue)
+            {
+                query = query.Where(h => h.BedsCount > minBeds.Value);
+            }
+            switch (sortOrder)
+            {
+                case "name": 
+                    query = query.OrderBy(h => h.Name);
+                    break;
+                case "beds_asc": 
+                    query = query.OrderBy(h => h.BedsCount); 
+                    break;
+                case "beds_desc":
+                    query = query.OrderByDescending(h => h.BedsCount);
+                    break;
+                default:
+                    query = query.OrderBy(h => h.Name);
+                    break;
+            }
+            return await query.ToListAsync();
         }
         public async Task<Hospital?> GetHospitalByIdAsync(int id)
         {
