@@ -7,22 +7,25 @@
 <h1>Doctors</h1>
 
 <p>
-    <a asp-action="Create">Create New Doctor</a>
+    <a asp-action="Create">Create new doctor</a>
 </p>
 
-<div class="row-mb-3">
+<div class="row mb-3">
+
     <div class="col-md-3">
         <label>Doctor Name</label>
         <input type="text" id="search"
             class="form-control"
             placeholder="Search by name..." />
     </div>
+
     <div class="col-md-3">
         <label>Specialty</label>
         <input type="text" id="specialty"
             class="form-control"
             placeholder="Enter specialty..."/>
     </div>
+
     <div class="col-md-3">
         <label>Sort By</label>
         <select id="sortOrder" class="form-control">
@@ -31,12 +34,14 @@
             <option value="specialty">Specialty A-Z</option>
         </select>
     </div>
+
     <div class="col-md-3 d-flex align-items-end">
         <button type="button" id="clearFilters"
             class="btn btn-secondary">
             Clear Filters
         </button>
     </div>
+
 </div>
 <table class="table">
     <thead>

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Data_Hospital_Manager.Migrations
 {
     /// <inheritdoc />
@@ -92,6 +94,42 @@ namespace Data_Hospital_Manager.Migrations
                         principalTable: "Patients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hospitals",
+                columns: new[] { "Id", "Address", "BedsCount", "CreatedOn", "Email", "IsDeleted", "Name", "PhoneNumber" },
+                values: new object[,]
+                {
+                    { 1, "Kazanlak", 200, new DateTime(2026, 11, 19, 20, 51, 37, 615, DateTimeKind.Local).AddTicks(9588), "hospital1@gmail.com", false, "MBAL Kazanlak", "1234567890" },
+                    { 2, "Stara Zagora", 350, new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "hospital2@gmail.com", false, "UMBAL Stara Zagora", "1261502980" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Patients",
+                columns: new[] { "Id", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[,]
+                {
+                    { 1, "email@email.com", "Petar", "Petrov", "0888888888" },
+                    { 2, "gmail@email.com", "Georgi", "Georgiev", "0899999999" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Doctors",
+                columns: new[] { "Id", "Email", "FirstName", "HospitalId", "LastName", "PhoneNumber", "Specialty" },
+                values: new object[,]
+                {
+                    { 1, "email@mail.com", "Ivan", 1, "Petrov", "0888888888", "Cardiology" },
+                    { 2, "gmail@gmail.com", "Georgi", 2, "Ivanov", "0899999999", "Neurology" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "DoctorPatients",
+                columns: new[] { "DoctorId", "PatientId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(

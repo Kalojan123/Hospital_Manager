@@ -156,7 +156,7 @@ namespace Data_Hospital_Manager.Migrations
                             Id = 1,
                             Address = "Kazanlak",
                             BedsCount = 200,
-                            CreatedOn = new DateTime(2026, 11, 3, 9, 47, 4, 617, DateTimeKind.Local).AddTicks(1773),
+                            CreatedOn = new DateTime(2026, 11, 19, 20, 51, 37, 615, DateTimeKind.Local).AddTicks(9588),
                             Email = "hospital1@gmail.com",
                             IsDeleted = false,
                             Name = "MBAL Kazanlak",

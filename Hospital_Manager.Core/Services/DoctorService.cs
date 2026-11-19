@@ -18,7 +18,7 @@ namespace Hospital_Manager.Core.Services
         {
             context_new = context;
         }
-        public async Task<List<Doctor>> GetAllDoctorsAsync(string? search, string? speciality, string? sortOrder)
+        public async Task<List<Doctor>> GetAllDoctorsAsync(string? search, string? specialty, string? sortOrder)
         {
             var query = context_new.Doctors.Include(d => d.Hospital).Where(d => true);
             IQueryable<Doctor> queryable = context_new.Doctors.Include(d => d.Hospital);
@@ -26,9 +26,9 @@ namespace Hospital_Manager.Core.Services
             {
                 query = query.Where(d => d.FirstName.Contains(search) || d.LastName.Contains(search));
             }
-            if (!string.IsNullOrWhiteSpace(speciality))
+            if (!string.IsNullOrWhiteSpace(specialty))
             {
-                query = query.Where(d => d.Specialty.Contains(speciality));
+                query = query.Where(d => d.Specialty.Contains(specialty));
             }
             switch (sortOrder) 
             {

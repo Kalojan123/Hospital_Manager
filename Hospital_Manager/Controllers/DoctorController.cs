@@ -19,9 +19,9 @@ namespace Hospital_Manager.Controllers
             _hospitalService = hospitalService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? search, string? specialty, string? sortOrder)
         {
-            var doctors = await _doctorService.GetAllDoctorsAsync();    
+            var doctors = await _doctorService.GetAllDoctorsAsync(search, specialty, sortOrder);
 
             var model = new List<DoctorIndexViewModel>();
 
@@ -40,9 +40,9 @@ namespace Hospital_Manager.Controllers
             return View(model);
         }
         [HttpGet]
-        public async Task<IActionResult> GetFilteredDoctors(string? search, string? speciality, string? sortOrder)
+        public async Task<IActionResult> GetFilteredDoctors(string? search, string? specialty, string? sortOrder)
         {
-            var doctors = await _doctorService.GetAllDoctorsAsync(search, speciality, sortOrder);
+            var doctors = await _doctorService.GetAllDoctorsAsync(search, specialty, sortOrder);
             var result = doctors.Select(d => new
             {
                 id = d.Id,
