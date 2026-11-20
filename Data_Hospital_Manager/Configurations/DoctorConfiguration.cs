@@ -1,6 +1,7 @@
 ﻿using Data_Hospital_Manager.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace Data_Hospital_Manager.Configurations
     {
         public void Configure(EntityTypeBuilder<Doctor> builder)
         {
+            builder.Property(d => d.FirstName).IsRequired().HasMaxLength(30);
+            builder.Property(d => d.LastName).IsRequired().HasMaxLength(30);
+            builder.Property(d => d.Specialty).IsRequired().HasMaxLength(50);
+            builder.Property(d => d.Email).IsRequired();
+            builder.Property(d => d.PhoneNumber).IsRequired();
+            builder.HasOne(d => d.Hospital).WithMany(h => h.Doctors).HasForeignKey(h => h.HospitalId).OnDelete(DeleteBehavior.Restrict);
             builder.HasData(
                 new Doctor {
                     Id = 1,

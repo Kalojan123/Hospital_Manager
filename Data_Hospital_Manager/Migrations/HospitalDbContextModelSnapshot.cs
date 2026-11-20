@@ -156,7 +156,7 @@ namespace Data_Hospital_Manager.Migrations
                             Id = 1,
                             Address = "Kazanlak",
                             BedsCount = 200,
-                            CreatedOn = new DateTime(2026, 11, 19, 20, 51, 37, 615, DateTimeKind.Local).AddTicks(9588),
+                            CreatedOn = new DateTime(2026, 11, 20, 14, 28, 34, 492, DateTimeKind.Local).AddTicks(9026),
                             Email = "hospital1@gmail.com",
                             IsDeleted = false,
                             Name = "MBAL Kazanlak",
@@ -229,7 +229,7 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasOne("Data_Hospital_Manager.Entities.Hospital", "Hospital")
                         .WithMany("Doctors")
                         .HasForeignKey("HospitalId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Hospital");

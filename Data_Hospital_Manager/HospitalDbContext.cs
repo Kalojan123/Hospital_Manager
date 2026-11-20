@@ -26,10 +26,7 @@ namespace Data_Hospital_Manager
         public DbSet<DoctorPatient> DoctorPatients { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<DoctorPatient>().HasKey(dp => new { dp.DoctorId, dp.PatientId });
-            modelBuilder.Entity<DoctorPatient>().HasOne(dp => dp.Doctor).WithMany(d => d.DoctorPatients).HasForeignKey(dp => dp.DoctorId).OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<DoctorPatient>().HasOne(dp => dp.Patient).WithMany(p => p.DoctorPatients).HasForeignKey(dp => dp.PatientId).OnDelete(DeleteBehavior.Cascade);
+            base.OnModelCreating(modelBuilder);            
             modelBuilder.ApplyConfiguration(new HospitalConfiguration());
             modelBuilder.ApplyConfiguration(new DoctorConfiguration());
             modelBuilder.ApplyConfiguration(new PatientConfiguration());
